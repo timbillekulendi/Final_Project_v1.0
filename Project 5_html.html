@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<!-- 
+	Timbille Kulendi
+	 13 November, 2014
+	 Introduction to Programming
+	 Project 4 - Game v0.6 
+-->
+	<head>
+		<title>
+			Maze Sprinter 
+		</title>
+		<style>
+			body {text-align:center;background-color:#800000;color:#FFFF00;font-family:Impact}
+			h3 {text-align:center;font-family:serif;text-align:justify}
+		</style>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+		<a href="mailto:timbille.kulendi1@marist.edu"> Click here for help</a>
+		<script type="text/javascript" src="P5_script.js"></script>
+		<script type="text/javascript" src="locations.js"></script>
+		<script type="text/javascript" src="navigation.js"></script>
+		</head>
+	<body onload="init();">
+		<h1>
+			The Maze Sprinter 
+		</h1>
+		<h3> You awake unconscious in the Glades, a square shaped land mass surrounded by towering walls, with no memories except for your name. Within the Glades is a whole community on its own with the little population calling themselves Gladers. You are told by the Gladers that the Glade is surrounded by a gigantic mechanical maze with mechanical creatures referred to as Grievers roaming at night. Every day when the gates open, a group of two go out mapping the maze which changes its pattern every night trying to solve the maze, a task they have been trying to complete for two years. Supplies are brought to the Glade every week; whereas a new boy is sent through an elevator called the Box once every month (that's how you end up here). The day after you arrive in the Glade, a girl is sent with a message that "this is the last one ever", meaning unless the Gladers could find a way out of the Glade fast enough they would all die! That night, the gates leading out to the maze do not close and the Grievers make their way into the Glades killing a majority of the Gladers before retreating back into the maze. You are now being blamed for all this misfortune and have the task of solving the maze before anyone else is killed. The destiny of the remaining Gladers is in your grasps. May the odds be in your favour. </h3>
+		<textarea id="taMain"
+			style="width:550px;height:345px;font-family:monospace;font-size:100%"></textarea> <img id="map" src="MapG.jpg" style="width:550px;height:350px">
+    
+		<br>
+		Command: <input type="text" 
+					id = "txtCommand"
+					name="txtCommand"
+					placeholder="Type your action"
+					onkeypress="txtCommand_keyPress(event);"> 
+		
+		<input type="button"
+			value="Go" 
+			onclick="btnGo_click();" />                           
+       
+		WASD command: <input type="text" 
+					id = "wasdCommand"
+					name="wasdCommand"
+					placeholder="Use w,a,s,d to navigate"
+					onkeypress="wasdCommand_keyPress(event);"> 
+		<br>
+		<input type="button"
+			value="Inventory" 
+			onclick="inventory();" />
+		<input type="button"
+			value="Search" 
+			onclick="search();" />
+		<input type="button"
+			value="Take" 
+			onclick="take();" />
+		<input type="button"
+			value="Escape Frequency" 
+			onclick="escapeFrequency();" />
+
+		<br>
+		<input type="button"
+			id = "North" 
+			value="North"
+			onclick="btnNorth_click();">
+		<br>
+		<input type="button"
+			id = "West" 
+			value="West"
+			onclick="btnWest_click();">
+		<input type="button"
+			id = "East" 
+            value="East"
+			onclick="btnEast_click();">
+		<br>
+		<input type="button"
+			id = "South" 
+			value="South"
+			onclick="btnSouth_click();">
+		<br>
+		<input type="button"
+			style="background-color:#0000FF;color:#FFFFFF"
+			id = "Help"
+			value="Help"
+			onclick="btnHelp_Click();">
+
+	</body>
+</html>
