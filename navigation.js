@@ -107,7 +107,7 @@ function navigation (dir){ //Default enables all the buttons.
     } break;
     
     case 2: switch (dir) { //In the case the user is in location 2, the different cases would function depending on the button pressed.
-    		case 1: if (win1() === 'end') {
+    		case 1: if (win1() === 'end') { //If player satisfies criteria in function win, he/she is allowed to move on.
     				currLoc = locArray[6].id;
     				displayMessage(locArray[6].description);
     				document.getElementById("map").src = "Map6.jpg";
@@ -151,7 +151,7 @@ function navigation (dir){ //Default enables all the buttons.
     				document.getElementById("map").src = "Map5.jpg";
     				document.getElementById("East").disabled = false; //In the case that the button is required, they are activated here.
     				break;
-    		case 3: if (win2() === 'allow') {
+    		case 3: if (win2() === 'allow') {//If player satisfies criteria in function win, he/she is allowed to move on.
     				currLoc = locArray[7].id;
     				displayMessage(locArray[7].description);
     				document.getElementById("map").src = "Map7.jpg";
