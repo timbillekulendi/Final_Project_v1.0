@@ -6,6 +6,7 @@ var score = 0; //For score of player.
 var navigationErrorCount = 0; //Used to count the number of times the player goes in the wrong direction.
 var sarcasmThreshold = 5; //Determine the threshold for the number of wrong moves a player makes to activate something.
 var itemCount = 0; //Used to count how many items the player has found.
+var moveCount = 0; //Used to count how many moves the player has made.
 var gameOver = 0// Keeps track of players errors
    	      
 var hasVisitedLoc0 = false; //Global variable to determine whether player has been in loc0.
@@ -25,6 +26,7 @@ var hasVisitedLoc9 = false; //Global variable to determine whether player has be
 //
 function init() {
 	look(LocArray[currloc]);
+	win();
 }
          
 			
@@ -180,13 +182,22 @@ function checkScore() { // This function is responsible for calculating the scor
 //
 //
 
-function win () {
-	if(itemCount<3) {
-		displayMessage ("You don't have all the items needed!");
-	}	
+function win1 () { // If player doesn't have more than 2 items in their inventory, they would be unable to get the food item in sector 6 and loose.
+	if (currLoc === 2 && itemCount >= 2 && moveCount <= 8) {
+			return 'end';
+	} else if (currLoc === 2 && itemCount < 2 && moveCount > 8) {
+		alert("YOU DON'T DESERVE THE ITEM THAT LAYS IN THE NEXT SECTOR, DIEEEEE!");
+	}
 }
 
-
+function win2 () { //If player doesn't answer the question correctly, the item in the next sector cannot be collected.
+	var funQue = prompt("What is 9 + 10?");	//Answer is actually 21, you'll know if you heard the joke.
+	if (funQue != 21) {
+			alert("You're definitely not getting this item! GAME OVER!");
+	} else 
+		{ return 'allow' }
+}
+		
 // Utility Function(s)
 //
 		
@@ -196,7 +207,7 @@ function displayMessage(msg) { //Responsible for the general display of text in 
 }
 
 function btnHelp_Click() { 
-	var helpMsg = "You are currently about to play or are playing The Maze Sprinter." + "\n\n" + "In this game you can use the directional buttons to navigate about the maze and find a way out. You can also type in the commands N, S, E, W, n, s, e, w, north, south, east, west into the command bar to navigate around the maze." + "\n\n" + "You can type in the keywords take, search and inventory to do their respective functions" + "\n\n" + "In the wasd command box, you can used the w, a, s, d keys to navigate your way around the maze. You can also use the space bar - search, r - take & x - inventory." + "\n\n" + "For every location you visit the first time, you are rewarded 5 points." + "\n\n" + "You can also pick up items in the different locations that would aid you in navigating the maze." + "\n\n" + "If you are still in need of for help, I'm just a hyperlink away! :)"
+	var helpMsg = "You are currently about to play or are playing The Maze Sprinter." + "\n\n" + "In this game you can use the directional buttons to navigate about the maze and find a way out. You can also type in the commands N, S, E, W, n, s, e, w, north, south, east, west into the command bar to navigate around the maze." + "\n\n" + "You can type in the keywords take, search and inventory to do their respective functions" + "\n\n" + "In the wasd command box, you can used the w, a, s, d keys to navigate your way around the maze. You can also use the space bar - search, r - take & x - inventory." + "\n\n" + "For every location you visit the first time, you are rewarded 5 points." + "\n\n" + "You can also pick up items in the different locations that would aid you in navigating the maze." + "\n\n" + "The game basically involves you roaming around a maze with no actual means of escaping but the opportunity to pick up items in the different sectors to survive. One item would be laying somewhere in the maze that would just require searching and taking. The others would involve having to complete some form of task. For food you would have to have a minimum of 2 items and no more than 8 moves throughout the games. For the spear you would need to answer a simple but not so simple question" + "\n\n" + "If you are still in need of for help, I'm just a hyperlink away! :)"
 	displayMessage(helpMsg);
 }
 
@@ -230,27 +241,5 @@ function wasdCommand_keyPress(keyboardEvent) { //Enable player to use w, a, s, d
 								}
 }		
 
-function End() { //Over() takes not parameter. It is used to disable everything in the game when the player loses. It empties the inventory and the location becomes 0.
-	if (gameOver === 5 || currLoc === 5) {
-		dispMsg("GAME OVER\n\n\n\n");
-		bag=[];
-		currLoc=0;
-		disable("North");
-		disable("South");
-		disable("West");
-		disable("East");
-		disable("txtCommand");
-		disable("txtCommandTwo");
-		disable("go");
-		disable("Tutorial");
-		disable("inventory");
-		disable("yes");
-		disable("no");
-		disable("search");
-		disable("take");
-		disable("Rune");
-		disable("Scroll");
-	}
-}
-									
+							
 

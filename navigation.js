@@ -26,18 +26,22 @@ var nav = [ // N   S   E   W
 
 function btnNorth_click() {  
 	navigation(0);
+	moveCount+= 1;
 }
 
 function btnSouth_click() {
 	navigation(1);
+	moveCount+=1;
 }
 
 function btnWest_click() {
 	navigation(2);
+	moveCount+=1;
 }
 
 function btnEast_click() {
 	navigation(3);
+	moveCount+=1;
 }
 
 
@@ -50,7 +54,8 @@ function navigation (dir){ //Default enables all the buttons.
     //
     //Navigation Logic
     //
-    switch(currLoc) {
+   
+   switch(currLoc) {
     	case 0: switch (dir) { //In the case the user is in location 0, the different cases would function depending on the button pressed.
     		case 0: currLoc = locArray[4].id; //If the player is in loc 0 and goes north, the user goes to loc 4 and the other functions activated.
     				displayMessage(locArray[4].description);
@@ -102,10 +107,12 @@ function navigation (dir){ //Default enables all the buttons.
     } break;
     
     case 2: switch (dir) { //In the case the user is in location 2, the different cases would function depending on the button pressed.
-    		case 1: currLoc = locArray[6].id;
+    		case 1: if (win1() === 'end') {
+    				currLoc = locArray[6].id;
     				displayMessage(locArray[6].description);
     				document.getElementById("map").src = "Map6.jpg";
     				document.getElementById("North").disabled = false; //In the case that the button is required, they are activated here.
+    				}
     				break;
     		case 3: currLoc = locArray[0].id;
     				displayMessage(locArray[0].description);
@@ -144,10 +151,12 @@ function navigation (dir){ //Default enables all the buttons.
     				document.getElementById("map").src = "Map5.jpg";
     				document.getElementById("East").disabled = false; //In the case that the button is required, they are activated here.
     				break;
-    		case 3: currLoc = locArray[7].id;
+    		case 3: if (win2() === 'allow') {
+    				currLoc = locArray[7].id;
     				displayMessage(locArray[7].description);
     				document.getElementById("map").src = "Map7.jpg";
     				document.getElementById("West").disabled = false; //In the case that the button is required, they are activated here.
+    				}
     				break;
     		default: navigationError();	
     } break;
@@ -209,7 +218,9 @@ function navigation (dir){ //Default enables all the buttons.
 	checkScore();
 	var desc ="Score: " + score;
 	displayMessage(desc);
-}	
+} 
+
+
     	
 	
 	
